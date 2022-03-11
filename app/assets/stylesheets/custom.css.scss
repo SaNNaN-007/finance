@@ -1,0 +1,39 @@
+@import 'bootstrap/dist/css/bootstrap';
+@import "font-awesome";
+
+  /* NAVBAR */
+
+.navbar-brand {
+    font-size: 1.5rem;
+    text-transform: uppercase;
+    font-weight: bold;
+    letter-spacing: -1px;
+  }
+  /* // Devise Alerts */
+
+.alertspace {
+  margin-top: 15px;
+}
+  /* // portfolio  */
+
+.search-area {
+  padding-top: 15px;
+  padding-bottom: 15px;
+}
+
+.no-right-padding {
+  padding-right: 0;
+}
+
+.no-left-padding {
+  padding-left: 0;
+}
+
+.results-block {
+  padding-top: 15px;
+  display: inline-block;
+}
+
+.pading-top {
+  padding-top: 5px;
+}
