@@ -1,0 +1,27 @@
+<h1 class = "friends-heading"> Friends </h1>
+
+<div class = "row friends-heading" >
+    <div class = "col-9">
+
+        <table class="table table-hover">
+            <thead class="thead-dark">
+                <tr>
+                <th scope="col"> User Email </th>
+                <th scope="col">First Name</th>
+                <th scope="col">Last Name</th>
+                <th scope="col">Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                <% @user_friends.each do |f| %>
+                    <tr>
+                    <th scope="row"><%= f.email %></th>
+                    <td><%= f.first_name %></td>
+                    <td><%= f.last_name %></td>
+                    <td> <%= link_to "Stop Following", user_stock_path(f), method: :delete, data: {confirm: "Are you Sure?"}, class: "btn btn-warning btn-sm" %></td>
+                    </tr>
+                <% end %>
+            </tbody>
+        </table>
+    </div>
+</div>
