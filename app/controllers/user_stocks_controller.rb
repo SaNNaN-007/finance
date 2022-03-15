@@ -7,14 +7,13 @@ class UserStocksController < ApplicationController
         if stock.blank?
 
             stock = Stock.new_lookup(params[:ticker])
-            # stock.save
+            stock.save
+        end
         
             @user_stock = UserStock.create(user: current_user, stock: stock)
 
             flash[:notice] = "The Stock #{stock.name} successfully added to your Portfolio."
             redirect_to my_portfolio_path
-            
-        end
 
     end
 
@@ -22,7 +21,7 @@ class UserStocksController < ApplicationController
         stock = Stock.find(params[:id])
         user_stock = UserStock.where(user_id: current_user.id, stock_id: stock.id).first
         user_stock.destroy
-        stock.destroy
+        # stock.destroy
         flash[:notice] = "Stock #{stock.ticker} Successfully Removed."
         redirect_to my_portfolio_path
     end
