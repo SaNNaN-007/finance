@@ -16,7 +16,30 @@
                 <th scope="row"><%= stock.ticker %></th>
                 <td><%= stock.name %></td>
                 <td><%= stock.last_price %></td>
-                <td> <%= link_to "Remove", user_stock_path(stock), method: :delete, data: {confirm: "Are you Sure?"}, class: "btn btn-warning btn-sm" %></td>
+                <td>
+                
+                <% if current_user.can_track_stocks(stock.ticker) %>
+                    <%= link_to "Add to Portfolio", user_stocks_path( user: current_user, ticker: stock.ticker ), class: "btn btn-success" ,method: :post %>
+                
+                <% elsif current_user.id != @user.id %>
+                    <span class = "badge badge-secondary badge-warning">
+                    You are already Tracking
+                    
+                    <% if !current_user.stock_limit %>   
+                        10 Stocks
+                    <% end %>
+
+                    <% if current_user.stock_already_exist(stock.ticker) %>
+                        this Stock
+                    <% end %>
+                    
+                    </span>
+                <% end %>
+                
+                <% if current_user.id == @user.id %> 
+                        <%= link_to "Remove", user_stock_path(stock), method: :delete, data: {confirm: "Are you Sure?"}, class: "btn btn-warning btn-sm" %> 
+                    <% end %></td>
+
                 </tr>
             <% end %>
         </tbody>
